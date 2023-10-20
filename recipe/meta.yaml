@@ -25,6 +25,7 @@ requirements:
     - setuptools
     - flake8 >=3.5
     - pytest >=3.5
+    - py
 
 test:
   imports:
