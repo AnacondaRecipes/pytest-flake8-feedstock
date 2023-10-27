@@ -11,28 +11,30 @@ source:
   sha256: ba4f243de3cb4c2486ed9e70752c80dd4b636f7ccb27d4eba763c35ed0cd316e
 
 build:
-  number: 0
-  noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  number: 1
+  skip: True # [py<38]
+  script: {{ PYTHON }} -m pip install --no-deps --no-deps --no-build-isolation -vv .
 
 requirements:
   host:
     - python
     - setuptools
     - pip
+    - wheel
   run:
     - python
-    - setuptools
     - flake8 >=3.5
     - pytest >=3.5
 
 test:
   requires:
     - py
+    - pip
   imports:
     - pytest_flake8
   commands:
     - pytest --flake8 --help
+    - pip check
 
 about:
   home: https://github.com/tholo/pytest-flake8
@@ -40,6 +42,10 @@ about:
   license_family: BSD
   license_file: LICENSE
   summary: pytest plugin to check FLAKE8 requirements
+  description:
+    pytest plugin to run flake8
+  doc_url: https://github.com/tholo/pytest-flake8/blob/master/README.rst
+  dev_url: https://github.com/tholo/pytest-flake8
 
 extra:
   recipe-maintainers:
