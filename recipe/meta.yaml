@@ -20,6 +20,7 @@ requirements:
     - python
     - setuptools
     - pip
+    - wheel
   run:
     - python
     - setuptools
@@ -33,6 +34,7 @@ test:
     - pytest_flake8
   commands:
     - pytest --flake8 --help
+    - pip check
 
 about:
   home: https://github.com/tholo/pytest-flake8
@@ -40,6 +42,10 @@ about:
   license_family: BSD
   license_file: LICENSE
   summary: pytest plugin to check FLAKE8 requirements
+  description:
+    pytest plugin to run flake8
+  doc_url: https://github.com/tholo/pytest-flake8/blob/master/README.rst
+  dev_url: https://github.com/tholo/pytest-flake8
 
 extra:
   recipe-maintainers:
