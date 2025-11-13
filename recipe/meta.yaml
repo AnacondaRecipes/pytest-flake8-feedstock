@@ -7,7 +7,7 @@ package:
 
 source:
   fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pytest_flake8-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-','_') }}-{{ version }}.tar.gz
   sha256: 88fb35562ce32d915c6ba41ef0d5e1cfcdd8ff884a32b7d46aa99fc77a3d1fe6
 
 build:
@@ -30,24 +30,29 @@ requirements:
     - pytest-enabler >=2.2
 
 test:
+  source_files:
+    - pyproject.toml
+    - pytest.ini
+    - tests
   requires:
-    - py
+    - pytest
     - pip
   imports:
     - pytest_flake8
   commands:
     - pytest --flake8 --help
     - pip check
+    - pytest -v
 
 about:
-  home: https://github.com/tholo/pytest-flake8
+  home: https://github.com/coherent-oss/pytest-flake8
   license: BSD-2-Clause
   license_family: BSD
   license_file: LICENSE
   summary: pytest plugin to check FLAKE8 requirements
   description: pytest plugin to run flake8
-  doc_url: https://github.com/tholo/pytest-flake8/blob/master/README.rst
-  dev_url: https://github.com/tholo/pytest-flake8
+  doc_url: https://github.com/coherent-oss/pytest-flake8/blob/master/README.rst
+  dev_url: https://github.com/coherent-oss/pytest-flake8
 
 extra:
   recipe-maintainers:
