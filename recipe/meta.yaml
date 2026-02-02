@@ -10,6 +10,9 @@ source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-','_') }}-{{ version }}.tar.gz
   sha256: 88fb35562ce32d915c6ba41ef0d5e1cfcdd8ff884a32b7d46aa99fc77a3d1fe6
   patches:
+    # Patch to fix pytest version 9 issue
+    # pytest.PytestRemovedIn9Warning: The (path: py.path.local) argument is deprecated, please use (file_path: pathlib.Path) 
+    # see https://docs.pytest.org/en/latest/deprecations.html#py-path-local-arguments-for-hooks-replaced-with-pathlib-path
     - 0001-fix-pytest-version-9.patch
 
 build:
